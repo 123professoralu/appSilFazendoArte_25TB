@@ -24,7 +24,7 @@ export default function Sobre(){
             {'\n'}{'\n'}
             Veja como funciona a produção: O auxiliar Tony, escolhe criteriosamente qual fita deve ser utilizada.
         </Texto>
-        <Image source={require('../../assets/escolha_fitas.jpeg')} style={estilos.img_sobre} resizeMode="contain"/>
+        <Image source={require('../../assets/escolha_fitas.jpeg')} style={estilos.img_sobre} />
         <Texto style={estilos.texto_sobre}>Depois disso, ela é aplicada ao produto que foi encomendado.</Texto>
         <VideoView style={estilos.video} player={player} allowsFullscreen allowsPictureInPicture />
     </ScrollView>
@@ -48,6 +48,10 @@ const estilos = StyleSheet.create({
     img_sobre: {
         height: 350,
         alignSelf: "center",
+        marginTop: 10,
+        marginBottom: 10,
+        borderRadius: 30,
+        width: 200,
     },
     video: {
         width: 350,

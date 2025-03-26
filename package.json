@@ -9,12 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~52.0.37",
+    "@expo-google-fonts/montserrat": "^0.2.3",
+    "expo": "^52.0.38",
+    "expo-font": "~13.0.4",
     "expo-status-bar": "~2.0.1",
+    "expo-video": "^2.0.6",
     "metro": "^0.81.2",
     "react": "18.3.1",
-    "react-native": "0.76.7",
-    "expo-video": "~2.0.5"
+    "react-native": "0.76.7"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
