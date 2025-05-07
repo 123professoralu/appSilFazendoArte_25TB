@@ -44,6 +44,10 @@ const estilosProdutos = StyleSheet.create({
         borderRadius: 60, 
         alignSelf: "center"
     },
+    imagemSlider: {
+        height: '90%',
+        alignSelf: 'center',
+    },
     modal: {
         backgroundColor: "#FFF",
         width: "85%",
@@ -74,6 +78,13 @@ const estilosProdutos = StyleSheet.create({
         color: "white",
         textAlign: "center",
     },
+    pagerView: {
+        flex: 1,
+    },
+    page: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
 
 export default estilosProdutos;
