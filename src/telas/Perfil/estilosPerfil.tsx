@@ -43,6 +43,21 @@ const Styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: 10,
   },
+  botao:{
+    width: "50%",
+    backgroundColor: "#6600CC",
+    borderWidth: 1,
+    borderColor: "white",
+    borderRadius: 2,
+    paddingBottom: 5,
+    marginRight: 5,
+  },
+  textoBotao: {
+    width: "100%",
+    fontSize: 16,
+    color: "white",
+    textAlign: "center",
+  },
 });
 
 export default Styles;
