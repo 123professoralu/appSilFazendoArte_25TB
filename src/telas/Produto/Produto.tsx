@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import { Card } from "react-native-paper";
-import { View, TouchableOpacity, Modal, Image} from "react-native";
+import { View, TouchableOpacity, Modal, Image, Alert} from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import PagerView from "react-native-pager-view";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Texto from '../../componentes/Texto';
 import styles from './estilosProdutos'
@@ -10,6 +11,17 @@ import styles from './estilosProdutos'
 export default function Produto({prod:{id,nome,imagem,descricao,slider}}:any){
 
     const [statusModal, acaoAbreFecha] = useState(false);
+
+    //Função para adicionar na Lista de Desejos
+    async function addListaDesejos(id:any,nome:any,imagem:any,descricao:any){
+      
+        const lista = {id,nome,imagem,descricao}  
+
+        //Cria a lista no AsyncStorage
+        await AsyncStorage.setItem('ListaDesejos', JSON.stringify([lista]))
+        Alert.alert('Produto adicionado na sua Lista de Desejos!')
+        console.log(lista)
+    }
 
     return <View>
             <Card mode='elevated' style={styles.card}> 
@@ -22,6 +34,9 @@ export default function Produto({prod:{id,nome,imagem,descricao,slider}}:any){
                         <Texto style={styles.textoBotao}>
                             <Ionicons name="list" size={12} color="white"/> Detalhes
                         </Texto>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>addListaDesejos(id,nome,imagem,descricao)}>
+                        <Ionicons name="heart-outline" size={30} color="purple"/>
                     </TouchableOpacity>
                 </Card.Actions>
             </Card>

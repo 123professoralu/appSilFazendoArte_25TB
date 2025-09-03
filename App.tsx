@@ -8,6 +8,7 @@ import { useAudioPlayer } from "expo-audio";
 
 import Sobre from "./src/telas/Sobre";
 import Texto from "./src/componentes/Texto";
+import Styles from "./src/telas/estiloGeral";
 
 /*Menu Produtos*/
 import Produtos from './src/telas/Produto'
@@ -15,6 +16,9 @@ import ListaProdutos from './src/mocks/listaProdutos'
 
 /*Menu Perfil*/
 import Perfil from './src/telas/Perfil/'
+
+/*Menu Lista de Desejos*/
+import ListaDesejos from './src/telas/ListaDesejos'
 
 function MenuProdutos(){
   return <Produtos {...ListaProdutos}/>
@@ -25,9 +29,24 @@ function MenuAudio(){
   const audioSource = require('./assets/acdc_highway_to_hell.mp3');
   const player = useAudioPlayer(audioSource);
 
-  return <TouchableOpacity onPress={()=>player.play()}>
-            <Texto>🎧On/Off</Texto>
+  //Só toca a música. Não tem pause.
+  // return <TouchableOpacity onPress={()=>player.play()}>
+  //           <Texto style={Styles.botaoAudio}>🎧 On/Off</Texto>
+  //       </TouchableOpacity>
+
+  //Recurso de ON e OFF do áudio
+  const onOff = () => {
+    if(player.playing){
+      player.pause();
+    } else {
+      player.play();
+    }
+  }
+
+  return <TouchableOpacity onPress={onOff}>
+            <Texto style={Styles.botaoAudio}>🎧 On/Off</Texto>
         </TouchableOpacity>
+
 }
 
 //Configuração do Menu
@@ -64,7 +83,7 @@ function Menu(){
             })}>
             <Tab.Screen name="Sobre" component={Sobre}/>
             <Tab.Screen name="Produtos" component={MenuProdutos}/>
-            <Tab.Screen name="Lista de Desejos" component={Sobre}/>
+            <Tab.Screen name="Lista de Desejos" component={ListaDesejos}/>
             <Tab.Screen name="Perfil" component={Perfil}/>
         </Tab.Navigator>
 }
