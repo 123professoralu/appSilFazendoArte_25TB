@@ -17,10 +17,35 @@ export default function Produto({prod:{id,nome,imagem,descricao,slider}}:any){
       
         const lista = {id,nome,imagem,descricao}  
 
-        //Cria a lista no AsyncStorage
-        await AsyncStorage.setItem('ListaDesejos', JSON.stringify([lista]))
-        Alert.alert('Produto adicionado na sua Lista de Desejos!')
-        console.log(lista)
+        //Verifica se a Lista de Desejos já existe
+        const listaDesejosSalva = await AsyncStorage.getItem('ListaDesejos')
+
+        if(listaDesejosSalva!==null){
+            //A lista já possui produtos
+            const listaDesejosNova = JSON.parse(listaDesejosSalva)
+        
+            //Verifica se o produto já está na lista
+            const jaExiste = listaDesejosNova.some((item:any)=>item.id ===id)
+            if(jaExiste){
+                Alert.alert("Este produto já está na sua Lista de Desejos.")
+                return
+            }
+
+            //Adiciona o novo produto no array
+            listaDesejosNova.push(lista)
+
+            //Atualiza o AsyncStorage
+            await AsyncStorage.setItem('ListaDesejos', JSON.stringify(listaDesejosNova))
+            Alert.alert('Produto adicionado na Lista de Desejos.')
+            //console.log(lista)
+
+        } else {
+            //Não há produtos, cria uma lista
+            //Cria a lista no AsyncStorage
+            await AsyncStorage.setItem('ListaDesejos', JSON.stringify([lista]))
+            Alert.alert('Produto adicionado na sua Lista de Desejos!')
+            //console.log(lista)
+        } 
     }
 
     return <View>

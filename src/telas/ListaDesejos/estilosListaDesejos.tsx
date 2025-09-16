@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     listaContainer: {
         flex: 1,
+        backgroundColor:'#E5E6FA',
     },
     cardContainer: {
         width: '50%',
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     nomeProduto: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 18,
         textAlign: 'center',
     },
     titulo: {
@@ -39,11 +40,15 @@ const styles = StyleSheet.create({
     },
     botaoApagar: {
         padding: 10,
-        width: '55%',
+        width:  '100%',
         backgroundColor: "purple",
-        borderWidth: 1,
-        borderRadius: 2,
         alignSelf: 'center',
+    },
+    textoBotao: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',    
     }
 })
 
