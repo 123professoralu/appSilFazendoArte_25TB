@@ -7,6 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useAudioPlayer } from "expo-audio";
 
 import Sobre from "./src/telas/Sobre";
+import MenuAPI from "./src/telas/API"
 import Texto from "./src/componentes/Texto";
 import Styles from "./src/telas/estiloGeral";
 
@@ -20,9 +21,18 @@ import Perfil from './src/telas/Perfil/'
 /*Menu Lista de Desejos*/
 import ListaDesejos from './src/telas/ListaDesejos'
 
+/*Menu dos Produtos SUPABASE*/
+import SupaProdutos from './src/telas/SupaProdutos' 
+
+/*Menu Produtos*/
 function MenuProdutos(){
   return <Produtos {...ListaProdutos}/>
 }
+
+
+
+/*Menu Lista de Encomendas */
+import ListaEncomendas from './src/telas/ListaEncomenda'
 
 //Áudio
 function MenuAudio(){
@@ -74,6 +84,14 @@ function Menu(){
                   iconName = focused
                   ? 'person'
                   : 'person-outline';
+                } else if(route.name ==="API"){
+                  iconName = focused
+                  ? 'logo-octocat'
+                  : 'logo-octocat';
+                } else if(route.name ==="Lista Produtos"){
+                  iconName = focused
+                  ? 'list'
+                  : 'list-outline';
                 }
                 return <Ionicons name={iconName} color={color} size={size}/>
               },
@@ -84,7 +102,9 @@ function Menu(){
             <Tab.Screen name="Sobre" component={Sobre}/>
             <Tab.Screen name="Produtos" component={MenuProdutos}/>
             <Tab.Screen name="Lista de Desejos" component={ListaDesejos}/>
+            <Tab.Screen name="Lista Produtos" component={SupaProdutos}/>
             <Tab.Screen name="Perfil" component={Perfil}/>
+            <Tab.Screen name="API" component={MenuAPI}/>
         </Tab.Navigator>
 }
 
